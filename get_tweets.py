@@ -5,13 +5,13 @@ import pandas as pd
 pd.set_option('display.max_colwidth', 1000)
 
 # api key
-api_key = "Enter API Key"
+api_key = ""
 # api secret key
-api_secret_key = "Enter API Secret Key"
+api_secret_key = ""
 # access token
-access_token = "Enter Access Token"
+access_token = ""
 # access token secret
-access_token_secret = "Enter Access Token Secret"
+access_token_secret = ""
 
 # authorization the API Key
 authentication = tweepy.OAuthHandler(api_key, api_secret_key)

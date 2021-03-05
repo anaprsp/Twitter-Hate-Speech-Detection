@@ -24,17 +24,27 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-# when the post method detect, then redirect to success function
+@app.route('/analysis/')
+def twitter_page():
+    return render_template('twitter_analysis.html')
+
+@app.route('/graph/')
+def graph():
+    return render_template('graph.html')
+    
 @app.route('/', methods=['POST', 'GET'])
 def get_data():
     if request.method == 'POST':
         user = request.form['search']
+        # when the post method detect, then redirect to success function
         return redirect(url_for('success', name=user))
 
 # get the data for the requested query
 @app.route('/success/<name>')
 def success(name):
     return "<xmp>" + str(requestResults(name)) + " </xmp> "
+
+
 
 if __name__ == '__main__' :
     app.run(debug=True)
