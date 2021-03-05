@@ -22,7 +22,7 @@ app = Flask(__name__)
 # render default webpage
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/analysis/')
 def twitter_page():
@@ -31,6 +31,10 @@ def twitter_page():
 @app.route('/graph/')
 def graph():
     return render_template('graph.html')
+
+@app.route('/graduation_project/')
+def graduation_project():
+    return render_template('graduation_project.html')
     
 @app.route('/', methods=['POST', 'GET'])
 def get_data():
