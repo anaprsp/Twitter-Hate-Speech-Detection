@@ -28,6 +28,10 @@ def home():
 def twitter_page():
     return render_template('twitter_analysis.html')
 
+@app.route('/twitter_project_details/')
+def twitter_project_details():
+    return render_template('twitter_project_details.html')
+
 @app.route('/graph/')
 def graph():
     return render_template('graph.html')
@@ -35,6 +39,10 @@ def graph():
 @app.route('/graduation_project/')
 def graduation_project():
     return render_template('graduation_project.html')
+
+@app.route('/twitter_results/')
+def twitter_results():
+    return render_template('twitter_results.html')
     
 @app.route('/', methods=['POST', 'GET'])
 def get_data():
@@ -46,8 +54,7 @@ def get_data():
 # get the data for the requested query
 @app.route('/success/<name>')
 def success(name):
-    return "<xmp>" + str(requestResults(name)) + " </xmp> "
-
+    return render_template('twitter_results.html')
 
 
 if __name__ == '__main__' :

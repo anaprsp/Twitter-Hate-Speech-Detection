@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet">
     </head>
 
     <body id="page-top">
@@ -21,49 +21,128 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Ana Paula R. S. Passos</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="" /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{url_for('static', filename='profile.jpg')}}" alt="" /></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
                 </ul>
             </div>
         </nav>
-        <section class="resume-section" id="experience">
+
+        <section class="resume-section" id="twitter_analysis">
           <div class="resume-section-content">
               <h2 class="mb-5">Twitter Sentiment Analysis</h2>
+              <div class="subheading mb-5">For any searched text, will be selected tweets related to that text in real-time and for all those selected tweets will be use the hate-speech detection model to classify the racist and sexist tweets.</div>
               <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                   <div class="flex-grow-1">
-                    <form action = "http://localhost:5000/" method = "post"> 
-                      <input type="text" class="form-control" placeholder="Search" name="search"> 
+                    <form action = "http://localhost:5000/" method = "post" style = "display: flex;"> 
+                      <input type="text" class="form-control" placeholder="Search" name="search">
                       <button class="btn btn-primary"><i class="fa fa-search"></i></button> 
                     </form>
                   </div>
               </div>
+              <div class="social-icons">
+                <a href="{{ url_for('twitter_project_details') }}" class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
+                    <path d="M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v6zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z"/>
+                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                  </svg>
+                </a>
+                </button>
+            </div>
           </div>
       </section>
       <hr class="m-0" />
 
-        <!-- <section class="resume-section" id="about">
-          <div class="resume-section-content">
-            <div class="row height d-flex justify-content-center align-items-center">
-              <div class="col-md-8">
-                <div class="search">
-                  <form action = "http://localhost:5000/" method = "post"> 
-                    <input type="text" class="form-control" placeholder="Search" name="search"> 
-                    <button class="btn btn-primary"><i class="fa fa-search"></i></button> 
-                  </form>
+      <!-- Page Content-->
+      <div class="container-fluid p-0">
+        <!-- About-->
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h1 class="mb-0">
+                    Ana Paula
+                    <span class="text-primary" style = "color: #41B3A3!important;">Passos</span>
+                </h1>
+                <div class="subheading mb-5">
+                    Seattle Area · WA
                 </div>
-              </div>
+                <p class="lead mb-5">Escrever algo aqui.</p>
+                <div class="social-icons">
+                    <a class="social-icon" href="https://www.linkedin.com/in/aprspassos/"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="social-icon" href="https://github.com/anaprsp"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-          </div>
         </section>
-      <hr class="m-0" /> -->
+        <hr class="m-0" />
+    <!-- Projects-->
+    <section class="resume-section" id="projects">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Projects</h2>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <a href="{{ url_for('graduation_project') }}" class="btn btn-primary">Graduation Project</a>
+                    <p style = "margin-top: 15px;">A Partnership with the INSaNE (Improving Network Security at the Network Edge) project for identification of faults and anomalies in the network.</p>
+                </div>
+                <div class="flex-shrink-0"><span class="text-primary">September 2018 - December 2018</span></div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <a class="btn btn-primary" href="{{ url_for('twitter_page') }}">Twitter Sentiment Analysis</a>
+                    <p style = "margin-top: 15px;">A detector of hate-speech tweets using logistic regression machine learning model.</p>
+                </div>
+                <div class="flex-shrink-0"><span class="text-primary">March 2021</span></div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <a class="btn btn-primary" href="{{ url_for('graph') }}">Graph Simulator</a>
+                    <p style = "margin-top: 15px;"></p>
+                </div>
+                <div class="flex-shrink-0"><span class="text-primary">April 2021</span></div>
+            </div>
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Education-->
+    <section class="resume-section" id="education">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Education</h2>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">Universidade Federal do Rio de Janeiro - UFRJ - BRAZIL</h3>
+                    <div class="subheading mb-3">Bachelor of Computer Engineer</div>
+                </div>
+                <div class="flex-shrink-0"><span class="text-primary">January 2014 - December 2018</span></div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">Coursera</h3>
+                    <div class="subheading mb-3">Machine Learning</div>
+                </div>
+                <div class="flex-shrink-0"><span class="text-primary">December 2020 - February 2021</span></div>
+            </div>
+        </div>
+    </section>
+    <hr class="m-0" />
 
-
+    <!-- Interests-->
+    <section class="resume-section" id="interests">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Interests</h2>
+            <p>Escrever algo aqui.</p>
+        </div>
+    </section>
+    <hr class="m-0" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
     </body>
 </html>
