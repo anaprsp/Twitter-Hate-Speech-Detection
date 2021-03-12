@@ -2,19 +2,24 @@
 from flask import Flask, render_template, request, redirect, url_for
 from joblib import load
 from get_tweets import get_related_tweets
+import os
 
 # load the pipeline object
-pipeline = load("text_classification.joblib")
+# pipeline = load("text_classification.joblib")
 
 # function to get results for a particular text query
-def requestResults(name):
+def requestResults(name, pipeline):
     # get the tweets text
     tweets = get_related_tweets(name)
     # get the prediction
     tweets['prediction'] = pipeline.predict(tweets['tweet_text'])
     # get the value counts of different labels predicted
-    data = str(tweets.prediction.value_counts()) + '\n\n'
-    return data + str(tweets)
+    
+    header = str(tweets.prediction.value_counts()) + '\n\n'
+    rows = []
+    for i in range(50):
+        rows.append({'tweet_text':tweets['tweet_text'][i], 'created_at': tweets['created_at'][i], 'tweet_id': tweets['tweet_id'][i], 'prediction': tweets['prediction'][i]})
+    return rows
 
     # start flask
 app = Flask(__name__)
@@ -54,7 +59,10 @@ def get_data():
 # get the data for the requested query
 @app.route('/success/<name>')
 def success(name):
-    return render_template('twitter_results.html')
+    model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "models", "text_classification.joblib")
+    pipeline = load(model_path)
+    data = requestResults(name, pipeline)
+    return render_template('twitter_results.html', data = data)
 
 
 if __name__ == '__main__' :
