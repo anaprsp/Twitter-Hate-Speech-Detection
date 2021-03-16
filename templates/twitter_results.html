@@ -38,25 +38,49 @@
         <section class="resume-section" id="twitter_results">
             <div class="resume-section-content">
                 <h2 class="mb-5">Twitter Results</h2>
+                <div class="config-panel"></div>
+                
+                <form action = "http://localhost:5000/" method = "post" style = "display: flex;">
+                    <div class="filter-bar">
+                        <div class="edit-filter-modal hidden">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <select>
+                                <option>Region</option>
+                                <option>Country</option>
+                                <option>State</option>
+                                <option>City</option>
+                            </select>
+                            <select>
+                                <option>Date</option>
+                                <option>Year</option>
+                                <option>Month</option>
+                                <option>Day</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <button class="btn btn-primary">Apply</button><button class="btn btn-primary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                
 
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Created at</th>
+                        <th scope="col" style="display: table-cell;">#</th>
+                        <th style="width: 20%;" scope="col">Created at</th>
                         <th scope="col">Tweet Id</th>
-                        <th scope="col">Tweet Text</th>
+                        <th scope="col" >Tweet Text</th>
                         <th scope="col">Prediction</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-row">
                         {% for i in range(data|length) %}
                             <tr>
-                                <th scope="row">{{i+1}}</th>
-                                <td>{{ data[i].created_at}}</td>
-                                <td>{{ data[i].tweet_id }}</td>
+                                <th style="text-align:center" scope="row">{{i+1}}</th>
+                                <td style="text-align:center">{{ data[i].created_at}}</td>
+                                <td style="text-align:center">{{ data[i].tweet_id }}</td>
                                 <td>{{ data[i].tweet_text }}</td>
-                                <td >{{ data[i].prediction }}</td>
+                                <td style="text-align:center">{{ data[i].prediction }}</td>
                                 <td></td>
                             </tr>
                         {% endfor %}
@@ -65,6 +89,7 @@
             </div>
         </section>
         <hr class="m-0" />
+
 
         <!-- Page Content-->
         <div class="container-fluid p-0">
