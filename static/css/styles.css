@@ -244,7 +244,11 @@ textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
+  font-weight: 800;
+  color: #23395B;
+  letter-spacing: 0.05rem;
   line-height: inherit;
+  padding: 0.375rem 0.75rem;
 }
 
 button,
@@ -1883,8 +1887,8 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #23395B;
+  border-color: #23395B;
 
 
 
@@ -2408,10 +2412,10 @@ textarea.form-control {
   display: inline-block;
   font-weight: 800;
   letter-spacing: 0.05rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #212529;
   text-align: center;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -2451,7 +2455,7 @@ fieldset:disabled a.btn {
 .btn-primary {
   color: #fff;
   background-color: #41B3A3;
-  border-color: #41B3A3;
+  border-color: #fff;
 }
 .btn-primary:hover {
   color: #fff;
@@ -10188,17 +10192,6 @@ section.resume-section .resume-section-content {
     box-sizing:border-box;
   }
 
-
-
-
-
-
-
-
-
-
-
-
   /* body{
     background-color: #2A2A2A;
     font-size: 14px;
@@ -10330,5 +10323,5 @@ section.resume-section .resume-section-content {
   
   .filter-hidden{
     display:none;
-  }   */
+  }  */
 }
