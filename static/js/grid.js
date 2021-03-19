@@ -1,20 +1,49 @@
 // function that builds a grid in the "container"
+const CellStateEnum = Object.freeze({"unvisited":1, "visited":2});
+const cellStateColor = new Map();
+cellStateColor.set(CellStateEnum.visited, "#23395B");
+cellStateColor.set(CellStateEnum.unvisited, "white");
+
+const gridState = [];
+function renderCellState(x,y){
+    const cellId = `#${x}-${y}`;
+    $(cellId).css("background-color", cellStateColor.get(gridState[x][y]));
+    
+}
+
+function renderGridState(){
+    for (let row = 0; row < gridState.length; row++) {
+        for (let column = 0; column < gridState[0].length; column++) {
+            renderCellState(x,y);
+        }
+    }
+}
+
 function createGrid(x, y) {
     let childrenElements = '';
     for (let row = 0; row < x; row++) {
+        let rowState = [];
         let cellElements = '';
         for (let column = 0; column < y; column++) {
-            cellElements += `<td id="${row}-${column}" class="unvisited"></td>`;
-            // $( "#target" ).click(function() {
-            //     alert( "Handler for .click() called." );
-            //   });
-        };
+            rowState.push(CellStateEnum.unvisited);
+            const cellId = `${row}-${column}`;
+            cellElements += `<td id="${cellId}" class="unvisited"></td>`;
+        }
+        gridState.push(rowState);
         childrenElements += `<tr id="row${row}">${cellElements}</tr>`;
-    };
-    
+    }
     $("#board-body").append(childrenElements);
-    // $(".grid").width(25);
-    // $(".grid").height(25);
+
+    for (let row = 0; row < x; row++) {
+        for (let column = 0; column < y; column++) {
+            const cellId = `#${row}-${column}`;
+            $(cellId).click(function() {
+                gridState[row][column] = CellStateEnum.visited;
+                renderCellState(row, column);
+              });
+        }
+    }
+    renderGridState();
 };
 
 // create a 16x16 grid when the page loads
