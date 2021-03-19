@@ -116,6 +116,18 @@ dl {
   margin-bottom: 1rem;
 }
 
+
+li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 25px;
+}
+
+li::marker {
+  color: transparent;
+  font-size: 1.5em;
+}
+
 ol ol,
 ul ul,
 ol ul,
@@ -1670,6 +1682,7 @@ pre code {
   padding: 0.75rem;
   vertical-align: top;
 }
+
 .table thead th {
   vertical-align: middle;
   text-align:center;
@@ -1711,7 +1724,7 @@ pre code {
   background-color: rgba(0, 0, 0, 0.075);
 }
 
-.table-primary,
+/* .table-primary,
 .table-primary > th,
 .table-primary > td {
   background-color: #edd2c7;
@@ -1729,7 +1742,7 @@ pre code {
 .table-hover .table-primary:hover > td,
 .table-hover .table-primary:hover > th {
   background-color: #e7c2b4;
-}
+} */
 
 .table-secondary,
 .table-secondary > th,
@@ -1874,15 +1887,15 @@ pre code {
 .table-active,
 .table-active > th,
 .table-active > td {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: #23395B;
 }
 
 .table-hover .table-active:hover {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: #23395B;
 }
 .table-hover .table-active:hover > td,
 .table-hover .table-active:hover > th {
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: #23395B;
 }
 
 .table .thead-dark th {
@@ -1988,7 +2001,7 @@ pre code {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  /* border: 1px solid #ced4da; */
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2484,29 +2497,29 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #23395B;
+  border-color: #23395B;
 }
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #23395B;
+  border-color: #23395B;
 }
 .btn-secondary:focus, .btn-secondary.focus {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #23395B;
+  border-color: #23395B;
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 .btn-secondary.disabled, .btn-secondary:disabled {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #23395B;
+  border-color: #23395B;
 }
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #545b62;
-  border-color: #4e555b;
+  background-color: #23395B;
+  border-color: #23395B;
 }
 .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus, .show > .btn-secondary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
@@ -10057,7 +10070,7 @@ h3 {
 }
 body {
   padding-top: 3.375rem;
-  color: #696773;
+  color: #23395B;
 }
 
 @media (min-width: 992px) {
@@ -10188,6 +10201,7 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 
+
   *, *:before, *:after {
     box-sizing:border-box;
   }
@@ -10210,7 +10224,6 @@ section.resume-section .resume-section-content {
   
   .filter-bar{
     height: 50px;
-    border-bottom: 1px solid #454545;
     padding: 16px;
     margin-left: 400px;
   }
@@ -10250,7 +10263,7 @@ section.resume-section .resume-section-content {
   
   .filter:hover, .filter-remove:hover{
     color: white;
-    background-color: #585858;
+    background-color: #23395B;
   }
   
   .operator{
@@ -10323,5 +10336,60 @@ section.resume-section .resume-section-content {
   
   .filter-hidden{
     display:none;
-  }  */
+  } */
+
+}
+
+#board{
+  border-collapse:collapse;
+}
+
+table {
+  border-spacing: 0;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+#board td {
+   border: 1px solid rgb(175,216,248);
+   width: 25px;
+   height: 25px;
+ }
+
+ .unvisited {
+   border: 1px solid rgb(175,216,248);
+   background-color: white;
+ }
+
+ td, th {
+   padding: 0;
+ }
+
+ .start {
+  text-align:center;
+ }
+
+ .target {
+  text-align:center;
+}
+
+.wall {
+  background-color: #23395B;
+}
+
+.visited {
+  background-color: #41B3A3;
+}
+
+.shortest-path {
+  background-color: #FF6600;
 }
