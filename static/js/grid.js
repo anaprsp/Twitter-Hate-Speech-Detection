@@ -1,8 +1,10 @@
 // function that builds a grid in the "container"
-const CellStateEnum = Object.freeze({"unvisited":1, "visited":2});
+const CellStateEnum = Object.freeze({"unvisited":1, "wall":2, "visited":3, "shortestPath":4});
 const cellStateColor = new Map();
-cellStateColor.set(CellStateEnum.visited, "#23395B");
+cellStateColor.set(CellStateEnum.wall, "#23395B");
 cellStateColor.set(CellStateEnum.unvisited, "white");
+cellStateColor.set(CellStateEnum.visited, "#41B3A3");
+cellStateColor.set(CellStateEnum.shortestPath, "#FF6600");
 
 const gridState = [];
 function renderCellState(x,y){
@@ -27,7 +29,15 @@ function createGrid(x, y) {
         for (let column = 0; column < y; column++) {
             rowState.push(CellStateEnum.unvisited);
             const cellId = `${row}-${column}`;
-            cellElements += `<td id="${cellId}" class="unvisited"></td>`;
+            if (cellId == "9-2") {
+                cellElements += `<td id="${cellId}" class="start"><i class='fas fa-angle-right fa-lg'></i></td>`;
+            }
+            else if (cellId == "9-27"){
+                cellElements += `<td id="${cellId}" class="target"><i class="fas fa-bullseye fa-lg"></i></td>`;
+            }
+            else{
+                cellElements += `<td id="${cellId}" class="unvisited"></td>`;
+            }
         }
         gridState.push(rowState);
         childrenElements += `<tr id="row${row}">${cellElements}</tr>`;
@@ -38,7 +48,7 @@ function createGrid(x, y) {
         for (let column = 0; column < y; column++) {
             const cellId = `#${row}-${column}`;
             $(cellId).click(function() {
-                gridState[row][column] = CellStateEnum.visited;
+                gridState[row][column] = CellStateEnum.wall;
                 renderCellState(row, column);
               });
         }
@@ -50,7 +60,7 @@ function createGrid(x, y) {
 // creates a hover effect that changes the color of a square to black when the mouse passes over it, leaving a (pixel) trail through the grid
 // allows the click of a button to prompt the user to create a new grid
 $(document).ready(function() {
-    createGrid(20, 20);
+    createGrid(20, 30);
 
     // $(".grid").mouseover(function() {
     //     $(this).css("background-color", "black");
