@@ -1,3 +1,4 @@
+
 const CellStateEnum = Object.freeze({"unvisited":1, "wall":2, "visited":3, "shortestPath":4});
 const cellStateColor = new Map();
 cellStateColor.set(CellStateEnum.wall, "#23395B");
@@ -27,10 +28,10 @@ function createGrid(x, y) {
         for (let column = 0; column < y; column++) {
             rowState.push(CellStateEnum.unvisited);
             const cellId = `${row}-${column}`;
-            if (cellId == "9-2") {
+            if (cellId == `${x/2}-${2}`) {
                 cellElements += `<td id="${cellId}" class="start"><i class='fas fa-angle-right fa-lg'></i></td>`;
             }
-            else if (cellId == "9-27"){
+            else if (cellId == `${x/2}-${y - 3}`){
                 cellElements += `<td id="${cellId}" class="target"><i class="fas fa-bullseye fa-lg"></i></td>`;
             }
             else{
@@ -57,12 +58,11 @@ function createGrid(x, y) {
                 }
                 renderCellState(row, column);
             });
-
         }
     }
     renderGridState();
 };
 
 $(document).ready(function() {
-    createGrid(20, 30);
+    createGrid(20, 40);
 });
